@@ -1,65 +1,69 @@
-body {
-    background-color: #0793e9; /* Softer blue background */
-    color: #000000; /* Black text color for better readability */
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Modern and polished CSS for the provided HTML */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #292828;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #636363;
+    color: rgb(255, 255, 255);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
 main {
-    background-color: #0b69dd;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #292828;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+#nomad-scale {
     text-align: center;
+}
+
+#datetime {
+    font-size: 1.2rem;
     margin-bottom: 20px;
-    color: #000000; /* Ensure h1 text is visible */
+    color: #fcfcfc;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.flourish-embed {
+    margin: 20px 0;
 }
 
-label {
-    margin-bottom: 5px;
-    color: #000000; /* Ensure label text is visible */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #292828;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 8px 8px 0 0;
 }
 
-input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #CCCCCC;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #006400; /* Dark green button */
-    color: #FFFFFF;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #228B22; /* Slightly lighter green on hover */
-}
-
-.login-form {
-    background-color: #0b69dd;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+footer p {
+    margin: 0;
 }
