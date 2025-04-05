@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnlyMok - Login</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="Styles.css">
+    <title>Document</title>
 </head>
 <body>
+    <header>
+        <h1>NEMOD</h1>
+        <h2>NEMOD scale will tell you if the economy is falling</h2>
+    </header>
     <main>
-        <h1>OnlyMok Login</h1>
-        <div class="login-box"></div>
-        <form class="login-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <button type="submit">Login</button>
-        </form>
-        </div>
+        <section id="nomad-scale">
+            <h3 id="datetime"></h3>
+            <div class="flourish-embed flourish-gauge" data-src="visualisation/22488572"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22488572/thumbnail" width="100%" alt="gauge visualization" /></noscript></div>
+        </section>
     </main>
+    <footer>
+        <p>&copy; 2023 NEMOD. All rights reserved.</p>
+    
+    <script>
+        function updateDateTime() {
+          const now = new Date();
+          const formatted = now.toLocaleString(); // You can customize this
+          document.getElementById('datetime').textContent = 'NEMOD scale as of: ' + formatted;
+           }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000) 
+    </script>
 </body>
 </html>
