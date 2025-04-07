@@ -14,21 +14,68 @@
     <main>
         <section id="nomad-scale">
             <h3 id="datetime"></h3>
+            <p id="market-status" class="market-open"></p>
             <div class="flourish-embed flourish-gauge" data-src="visualisation/22488572"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22488572/thumbnail" width="100%" alt="gauge visualization" /></noscript></div>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 NEMOD. All rights reserved.</p>
     
-    <script>
-        function updateDateTime() {
-          const now = new Date();
-          const formatted = now.toLocaleString(); // You can customize this
-          document.getElementById('datetime').textContent = 'NEMOD scale as of: ' + formatted;
-           }
+        <script>
+            function updateDateTime() {
+                const now = new Date();
+                const formatted = now.toLocaleString();
+                document.getElementById('datetime').textContent = 'NEMOD scale as of: ' + formatted;
+            }
         
-        updateDateTime();
-        setInterval(updateDateTime, 1000) 
-    </script>
+            function updateMarketStatus() {
+                const now = new Date();
+        
+                // Market open hours: Monday - Friday, 9:30 AM to 4:00 PM ET (New York time)
+                const nyNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+                const day = nyNow.getDay(); // 0 = Sunday, 6 = Saturday
+                const hours = nyNow.getHours();
+                const minutes = nyNow.getMinutes();
+        
+                const marketStatus = document.getElementById('market-status');
+        
+                const isWeekday = day >= 1 && day <= 5;
+                const isOpen = isWeekday && (hours > 9 || (hours === 9 && minutes >= 30)) && (hours < 16);
+        
+                if (isOpen) {
+                    marketStatus.textContent = "The market is currently open.";
+                    marketStatus.style.color = "limegreen";
+                } else {
+                    // Determine next opening time
+                    let nextOpen = new Date(nyNow);
+                    if (day === 6 || (day === 5 && (hours >= 16))) {
+                        // It's Saturday or Friday after close → Next Monday 9:30
+                        nextOpen.setDate(nyNow.getDate() + ((8 - day) % 7));
+                    } else if (day === 0 || (hours >= 16)) {
+                        // Sunday or weekday after close → next weekday
+                        nextOpen.setDate(nyNow.getDate() + 1);
+                    }
+        
+                    nextOpen.setHours(9, 30, 0, 0); // 9:30 AM
+        
+                    const msUntilOpen = nextOpen - nyNow;
+                    const hoursLeft = Math.floor(msUntilOpen / (1000 * 60 * 60));
+                    const minutesLeft = Math.floor((msUntilOpen % (1000 * 60 * 60)) / (1000 * 60));
+        
+                    marketStatus.textContent = `The market is closed, but will open again in ${hoursLeft}h ${minutesLeft}m.`;
+                    marketStatus.style.color = "crimson";
+                }
+            }
+        
+            function updateAll() {
+                updateDateTime();
+                updateMarketStatus();
+            }
+        
+            updateAll();
+            setInterval(updateAll, 60000); // Update every minute
+        </script>
+        
 </body>
 </html>
+
