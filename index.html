@@ -12,10 +12,16 @@
         <h2>NEMOD scale will tell you if the economy is falling</h2>
     </header>
     <main>
-        <section id="nomad-scale">
+        <section id="nemod-scale">
             <h3 id="datetime"></h3>
             <p id="market-status" class="market-open"></p>
             <div class="flourish-embed flourish-gauge" data-src="visualisation/22488572"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22488572/thumbnail" width="100%" alt="gauge visualization" /></noscript></div>
+        </section>
+        <section id="news">
+            <h3>Latest News</h3>
+            <h2>White House pauses tariffs in display of weakness</h2>
+            <p>Surprising news from the White House today as it has signaled it will pause tariffs. this among the crashing S&P and DJI.</p>
+            <p>It is uncertain what will come from this, but the past week, in addition to this policy reversal, paints Donald Trump in a weak light</p>
         </section>
     </main>
     <footer>
@@ -30,10 +36,9 @@
         
             function updateMarketStatus() {
                 const now = new Date();
-        
-                // Market open hours: Monday - Friday, 9:30 AM to 4:00 PM ET (New York time)
+    
                 const nyNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-                const day = nyNow.getDay(); // 0 = Sunday, 6 = Saturday
+                const day = nyNow.getDay();
                 const hours = nyNow.getHours();
                 const minutes = nyNow.getMinutes();
         
@@ -46,17 +51,14 @@
                     marketStatus.textContent = "The market is currently open.";
                     marketStatus.style.color = "limegreen";
                 } else {
-                    // Determine next opening time
                     let nextOpen = new Date(nyNow);
                     if (day === 6 || (day === 5 && (hours >= 16))) {
-                        // It's Saturday or Friday after close → Next Monday 9:30
                         nextOpen.setDate(nyNow.getDate() + ((8 - day) % 7));
-                    } else if (day === 0 || (hours >= 16)) {
-                        // Sunday or weekday after close → next weekday
+                    } else if (day === 0 || (hours >= 16)) { 
                         nextOpen.setDate(nyNow.getDate() + 1);
                     }
         
-                    nextOpen.setHours(9, 30, 0, 0); // 9:30 AM
+                    nextOpen.setHours(9, 30, 0, 0);
         
                     const msUntilOpen = nextOpen - nyNow;
                     const hoursLeft = Math.floor(msUntilOpen / (1000 * 60 * 60));
@@ -73,9 +75,8 @@
             }
         
             updateAll();
-            setInterval(updateAll, 60000); // Update every minute
+            setInterval(updateAll, 60000);
         </script>
         
 </body>
 </html>
-
