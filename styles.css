@@ -5,38 +5,41 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
     line-height: 1.6;
-    color: white;
-    background-color: #292828;
+    color: #E0E0E0;
+    background-color: #121212;
     padding: 0 20px;
 }
 
 header {
     text-align: center;
-    padding: 20px 0;
-    background-color: #636363;
-    color: white;
+    padding: 30px 0;
+    background-color: #1E1E1E;
+    color: #FF1744;
+    box-shadow: 0 4px 10px rgba(255, 23, 68, 0.3);
 }
 
 header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
     margin-bottom: 10px;
 }
 
 header h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 300;
+    color: #B0BEC5;
 }
 
 main {
-    max-width: 800px;
-    margin: 20px auto;
-    background: #292828;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px black;
+    max-width: 900px;
+    margin: 40px auto;
+    background: #1C1C1C;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.1);
 }
 
 #nomad-scale {
@@ -44,26 +47,29 @@ main {
 }
 
 #datetime {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
-    color: white;
+    color: #00E5FF;
 }
 
 .flourish-embed {
     margin: 20px 0;
+    border: 2px solid #444;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 footer {
     text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    background-color: #292828;
-    color: white;
+    padding: 15px 0;
+    margin-top: 40px;
+    background-color: #1E1E1E;
+    color: #B0BEC5;
     font-size: 0.9rem;
-    border-radius: 8px 8px 0 0;
+    border-top: 1px solid #333;
+    border-radius: 0 0 12px 12px;
 }
 
 footer p {
     margin: 0;
 }
-
